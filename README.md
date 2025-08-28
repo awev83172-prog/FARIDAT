@@ -1,0 +1,2 @@
+# FARIDAT
+Fashion Store
