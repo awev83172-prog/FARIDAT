@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SHOP W FAFA | Contact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: "Poppins", sans-serif; }
+    h1,h2,h3,h4 { font-family: "Playfair Display", serif; }
+    .fade-up { opacity:0; transform: translateY(25px); transition: all 0.9s ease; }
+    .fade-up.show { opacity:1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-purple-50 text-gray-900">
+
+  <!-- NAVBAR -->
+  <header class="bg-white/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center gap-3">
+        <img src="images/logo.png" alt="SHOP W FAFA Logo" class="w-14 h-14 rounded-full">
+        <a href="index.html" class="text-2xl font-bold text-purple-600">SHOP W FAFA</a>
+      </div>
+      <nav class="hidden md:flex gap-6 text-gray-700 font-medium">
+        <a href="index.html" class="hover:text-purple-600 transition">Home</a>
+        <a href="about.html" class="hover:text-purple-600 transition">About</a>
+        <a href="shop.html" class="hover:text-purple-600 transition">Shop</a>
+        <a href="contact.html" class="hover:text-purple-600 transition font-semibold">Contact</a>
+        <a href="https://wa.me/08038137679" class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 hover:scale-105 transition">WhatsApp</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="mobileBtn" class="text-2xl">☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 p-4 flex flex-col gap-2">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html" class="font-semibold">Contact</a>
+      <a href="https://wa.me/08038137679" class="text-purple-600 font-semibold">WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTACT SECTION -->
+  <main class="max-w-4xl mx-auto py-12 px-4 fade-up">
+    <h1 class="text-3xl font-bold text-purple-600 mb-4">Contact SHOP W FAFA</h1>
+    <p class="text-gray-700 mb-8">Have a question, want to place a custom order, or inquire about worldwide delivery? Reach out to us directly.</p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- MESSAGE FORM -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="font-semibold text-purple-600 mb-4">Send us a message</h3>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label class="text-sm">Your Name</label>
+            <input type="text" name="name" class="w-full border p-3 rounded mt-1" required>
+          </div>
+          <div>
+            <label class="text-sm">Email</label>
+            <input type="email" name="email" class="w-full border p-3 rounded mt-1" required>
+          </div>
+          <div>
+            <label class="text-sm">Message</label>
+            <textarea name="message" rows="5" class="w-full border p-3 rounded mt-1" required></textarea>
+          </div>
+          <button type="submit" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">Send Message</button>
+        </form>
+      </div>
+
+      <!-- CONTACT DETAILS -->
+      <div class="bg-white p-6 rounded-lg shadow fade-up">
+        <h3 class="font-semibold text-purple-600 mb-4">Other ways to reach us</h3>
+        <p class="text-gray-700">WhatsApp: <a href="https://wa.me/08038137679" class="text-purple-600 font-semibold">+234 803 813 7679</a></p>
+        <p class="text-gray-700 mt-2">Email: <a href="mailto:noaharidat@gmail.com" class="text-purple-600 font-semibold">noaharidat@gmail.com</a></p>
+        <p class="text-gray-700 mt-2">Instagram: <a href="https://instagram.com/shopwfafa" class="text-purple-600 font-semibold">@shopwfafa</a></p>
+
+        <div class="mt-6">
+          <h4 class="font-semibold text-purple-600">Visit our store</h4>
+          <p class="text-gray-600 text-sm mt-1">Address: 25 Fashion Avenue, Lagos</p>
+        </div>
+
+        <div class="mt-6">
+          <a href="https://wa.me/08038137679" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition inline-block">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white mt-12 py-6 text-center text-gray-500">
+    © 2025 SHOP W FAFA | All Rights Reserved | Developed by VT
+  </footer>
+
+  <script>
+    const btn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(btn){ btn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden')); }
+
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    },{threshold:0.2});
+    fadeElements.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

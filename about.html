@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOP W FAFA | About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: "Poppins", sans-serif; }
+    h1,h2,h3,h4 { font-family: "Playfair Display", serif; }
+    .fade-up { opacity:0; transform: translateY(25px); transition: all 0.9s ease; }
+    .fade-up.show { opacity:1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-pink-50 via-white to-purple-50 text-gray-900">
+
+  <!-- NAVBAR -->
+  <header class="bg-white/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center gap-3">
+        <img src="images/logo.png" alt="SHOP W FAFA Logo" class="w-14 h-14 rounded-full">
+        <a href="index.html" class="text-2xl font-bold text-purple-600">SHOP W FAFA</a>
+      </div>
+      <nav class="hidden md:flex gap-6 text-gray-700 font-medium">
+        <a href="index.html" class="hover:text-purple-600 transition">Home</a>
+        <a href="about.html" class="hover:text-purple-600 transition font-semibold">About</a>
+        <a href="shop.html" class="hover:text-purple-600 transition">Shop</a>
+        <a href="contact.html" class="hover:text-purple-600 transition">Contact</a>
+        <a href="https://wa.me/08038137679" class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 hover:scale-105 transition">WhatsApp</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="mobileBtn" class="text-2xl">☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 p-4 flex flex-col gap-2">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="font-semibold">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://wa.me/08038137679" class="text-purple-600 font-semibold">WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- ABOUT SECTION -->
+  <section class="max-w-6xl mx-auto py-16 px-6 fade-up">
+    <h1 class="text-4xl font-bold text-purple-600 mb-6 text-center">About SHOP W FAFA</h1>
+    <p class="text-gray-700 text-lg leading-relaxed mb-6 text-center">
+      SHOP W FAFA, founded by Noah Faridat, is a destination for stylish fashion and luxury pieces at affordable prices.
+      We specialize in beads, hair accessories, jean chains, headbands, phone holders, sundresses, shoes, luxury male & female outfits,
+      and surprise gift packages shipped worldwide.
+    </p>
+
+    <!-- Founder Message -->
+    <div class="bg-white p-6 rounded-lg shadow mb-10 fade-up">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">A Message from the Founder</h2>
+      <p class="text-gray-700 leading-relaxed mb-2">
+        "Fashion is more than style—it's confidence and self-expression. At SHOP W FAFA, I aim to bring you trendy, high-quality
+        pieces without breaking the bank. Every accessory and outfit is selected with care, love, and passion."
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        Whether you're shopping for everyday fashion, gifts, or luxury pieces, we ensure a personal touch and worldwide delivery.
+      </p>
+    </div>
+
+    <!-- Philosophy -->
+    <div class="bg-purple-50 p-6 rounded-lg shadow mb-10 fade-up">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">Our Philosophy</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Quality accessories and fashion pieces for everyone.</li>
+        <li>Affordable luxury and special discounts on selected products.</li>
+        <li>Worldwide delivery with careful packaging.</li>
+        <li>Customer-first approach with fast communication via WhatsApp and email.</li>
+        <li>Trendy designs for modern men and women who value style.</li>
+      </ul>
+    </div>
+
+    <!-- IMAGE GALLERY -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-10">
+      <img src="beadd.jpg" alt="Beads" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="luxury.jpg" alt="Hair Clip" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="shoes.jpg" alt="Shoe" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="rings.jpg" alt="Sundress" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="bottle.jpg" alt="Headband" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="gits.jpg" alt="Phone Holder" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="bands.jpg" alt="Luxury Male Wear" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="gloss.jpg" alt="Gift Package" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="clock.jpg" alt="Jean Chain" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="clipp.jpg" alt="Hair Claw" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="band.jpg" alt="Shoe Pair" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+      <img src="sun.jpg" alt="Sundress" class="rounded-xl object-cover h-48 hover:scale-105 transition">
+    </div>
+
+    <!-- Team Info -->
+    <div class="bg-white p-6 rounded-lg shadow mt-10 fade-up">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">Meet Our Team</h2>
+      <p class="text-gray-700 leading-relaxed mb-2">
+        While Noah Faridat leads SHOP W FAFA, our dedicated team of designers, packagers, and support staff ensures every order is perfect.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        From designing trendy accessories to curating luxury wear and handling worldwide shipping, our team makes sure each customer feels valued.
+      </p>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-12 fade-up">
+      <h2 class="text-2xl font-semibold text-purple-600 mb-4">Ready to Shop?</h2>
+      <p class="text-gray-700 mb-6">Check out our full collection and special discounts on selected items.</p>
+      <a href="shop.html" class="bg-purple-600 text-white px-8 py-4 rounded-lg shadow hover:bg-purple-700 hover:scale-105 transition">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white mt-12 py-6 text-center text-gray-500">
+    © 2025 SHOP W FAFA | All Rights Reserved | Developed by VT
+  </footer>
+
+  <script>
+    const btn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(btn){ btn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden')); }
+
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('show'); }
+      });
+    },{threshold:0.2});
+    fadeElements.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

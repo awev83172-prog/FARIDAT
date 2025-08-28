@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHOP W FAFA | Shop</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body { font-family: "Poppins", sans-serif; }
+h1,h2,h3,h4 { font-family: "Playfair Display", serif; }
+.fade-up { opacity:0; transform: translateY(25px); transition: all 0.9s ease; }
+.fade-up.show { opacity:1; transform: translateY(0); }
+.hover-zoom { transition: transform 0.35s ease; }
+.hover-zoom:hover { transform: scale(1.05); }
+.products-grid { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.12) transparent; }
+.products-grid::-webkit-scrollbar { height: 8px; width: 8px; }
+.products-grid::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 8px; }
+#discountSidebar { transition: all 0.5s; cursor: grab; }
+</style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-purple-50 text-gray-900">
+
+<!-- NAVBAR -->
+<header class="bg-white/90 backdrop-blur sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-3">
+      <img src="images/logo.png" alt="SHOP W FAFA Logo" class="w-14 h-14 rounded-full">
+      <a href="index.html" class="text-2xl font-bold text-purple-600">SHOP W FAFA</a>
+    </div>
+    <nav class="hidden md:flex gap-6 text-gray-700 font-medium">
+      <a href="index.html" class="hover:text-purple-600 transition">Home</a>
+      <a href="about.html" class="hover:text-purple-600 transition">About</a>
+      <a href="shop.html" class="hover:text-purple-600 transition font-semibold">Shop</a>
+      <a href="contact.html" class="hover:text-purple-600 transition">Contact</a>
+      <a href="https://wa.me/08038137679" class="bg-purple-600 text-white px-4 py-2 rounded-lg shadow hover:bg-purple-700 hover:scale-105 transition">WhatsApp</a>
+    </nav>
+    <div class="md:hidden">
+      <button id="mobileBtn" class="text-2xl">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-white/95 p-4 flex flex-col gap-2">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="shop.html" class="font-semibold">Shop</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://wa.me/08038137679" class="text-purple-600 font-semibold">WhatsApp</a>
+  </div>
+</header>
+
+<!-- SEARCH / FILTER -->
+<main class="max-w-7xl mx-auto py-10 px-4">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+    <h1 class="text-3xl font-bold text-purple-600">Shop W FAFA — Accessories & Luxury Wears</h1>
+    <div class="flex gap-3 items-center">
+      <input id="searchBox" type="search" placeholder="Search product name or number" class="p-3 rounded-lg border border-gray-300 w-64" />
+      <select id="categoryFilter" class="p-3 rounded-lg border border-gray-300">
+        <option value="all">All categories</option>
+        <option value="accessory">Accessory</option>
+        <option value="luxury">Luxury Wear</option>
+        <option value="gift">Gift Package</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <section id="products" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 products-grid"></section>
+</main>
+
+<!-- DISCOUNT SLIDEOUT -->
+<div id="discountSidebar" class="fixed top-1/4 right-[-260px] w-64 bg-purple-50 p-4 rounded-l-2xl shadow-lg z-50">
+  <div class="flex justify-between items-center mb-2">
+    <h3 class="text-purple-600 font-semibold text-center flex-1">Special Discounts</h3>
+    <button id="discountToggle" class="bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-700 transition">×</button>
+  </div>
+  <div id="discountProducts" class="flex flex-col gap-3 overflow-y-auto max-h-[500px]"></div>
+</div>
+<button id="discountShowBtn" class="fixed top-1/4 right-0 bg-purple-600 text-white px-3 py-2 rounded-l-lg z-50 shadow hover:bg-purple-700 transition">Discounts</button>
+
+<footer class="bg-white mt-12 py-6 text-center text-gray-500">
+  © 2025 SHOP W FAFA | All Rights Reserved | Developed by VT
+</footer>
+
+<script>
+const productsEl = document.getElementById('products');
+const searchBox = document.getElementById('searchBox');
+const categoryFilter = document.getElementById('categoryFilter');
+const discountSidebar = document.getElementById('discountSidebar');
+const discountToggle = document.getElementById('discountToggle');
+const discountShowBtn = document.getElementById('discountShowBtn');
+const discountProductsEl = document.getElementById('discountProducts');
+
+const allProducts = [
+  {id:'01', name:'Pimple patch', category:'accessory', img:'beadd.jpg'}, 
+  {id:'02', name:'Black Bands', category:'accessory', img:'bands.jpg'},
+  {id:'03', name:'Scrunchie', category:'accessory', img:'puns.jpg'},
+  {id:'04', name:'Head Claw', category:'luxury', img:'largeclaw.jpg'},
+  {id:'05', name:'Rings', category:'luxury', img:'sun.jpg'}, 
+  {id:'06', name:'Phone Holder', category:'accessory', img:'cute.jpg'},
+  {id:'07', name:'Beads Bracelet', category:'accessory', img:'beads.jpg'},
+  {id:'08', name:'Hair Claw Set', category:'accessory', img:'claw.jpg'},
+  {id:'09', name:'Luxury Female Dress', category:'luxury', img:'emale.jpg'},
+  {id:'10', name:'Gift Surprise Pack', category:'gift', img:'git.jpg'},
+  {id:'11', name:'Shoe Sandals', category:'luxury', img:'sandal.jpg'},
+  {id:'12', name:'Jean Chain Silver', category:'accessory', img:'chain.jpg'},
+  {id:'13', name:'Hair Clip Set', category:'accessory', img:'clip.jpg'},
+  {id:'14', name:'Luxury Male Shirt', category:'luxury', img:'male.jpg'},
+  {id:'15', name:'Beads Necklace', category:'accessory', img:'neckbead.jpg'},
+  {id:'16', name:'Gift Mini Pack', category:'gift', img:'gits.jpg'},
+  {id:'17', name:'Luxury Female Shoes', category:'luxury', img:'emales.jpg'},
+  {id:'18', name:'Headband Blue', category:'accessory', img:'bands.jpg'},
+  {id:'19', name:'Hair Claw Large', category:'accessory', img:'largeclaw.jpg'},
+  {id:'20', name:'Gift Medium Pack', category:'gift', img:'mediumgits.jpg'},
+  {id:'21', name:'Luxury Male Pants', category:'luxury', img:'pants.jpg'},
+  {id:'22', name:'Sundress Summer', category:'luxury', img:'summer.jpg'},
+  {id:'23', name:'Phone Holder Cute', category:'accessory', img:'holder.jpg'},
+  {id:'24', name:'Beads Anklet', category:'accessory', img:'bead.jpg'},
+  {id:'25', name:'Hair Clip Gold', category:'accessory', img:'gold.jpg'},
+  {id:'26', name:'Luxury Female Top', category:'luxury', img:'emaletop.jpg'},
+  {id:'27', name:'Gift Large Pack', category:'gift', img:'mediumgit.jpg'},
+  {id:'28', name:'Luxury Male Shoes', category:'luxury', img:'shoes.jpg'},
+  {id:'29', name:'Headband Red', category:'accessory', img:'redband.jpg'},
+  {id:'30', name:'Hair Claw Small', category:'accessory', img:'smallclip.jpg'}
+];
+
+// Discounted product prices
+const discountProducts = [
+  {id:'01', name:'Pimple patch', price:2500, img:'clipp.jpg', original: 3500},
+  {id:'02', name:'Black Bands', price:700, img:'bands.jpg', original: 1200},
+  {id:'03', name:'Scrunchie', price:1000, img:'puns.jpg', original: 1500},
+  {id:'04', name:'Head Claw', price:3500, img:'largeclaw.jpg', original: 5000},
+  {id:'07', name:'Beads Bracelet', price:3500, img:'beads.jpg', original: 4500},
+  {id:'05', name:'Rings', price:3000, img:'sun.jpg', original: 4000},
+];
+
+// Make a quick lookup map
+const discountMap = {};
+discountProducts.forEach(p=>{
+  const percent = Math.round(((p.original - p.price)/p.original)*100);
+  discountMap[p.id] = {price:p.price, percent};
+});
+
+
+function renderProducts() {
+  productsEl.innerHTML = '';
+  const cat = categoryFilter.value;
+  const q = searchBox.value.trim().toLowerCase();
+
+  const filtered = allProducts.filter(p=>{
+    const matchesCat = cat==='all' || p.category===cat;
+    const matchesQ = !q || p.name.toLowerCase().includes(q);
+    return matchesCat && matchesQ;
+  });
+
+  filtered.forEach(p=>{
+    const card = document.createElement('article');
+    card.className = 'relative bg-white rounded-lg shadow fade-up hover:shadow-lg transition';
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.name}" class="w-full h-44 object-cover hover-zoom">
+      <div class="p-3">
+        <h3 class="font-medium text-sm mb-1">${p.name}</h3>
+        <p class="text-sm font-semibold text-gray-800">₦${p.price}</p>
+        <div class="flex justify-end mt-2">
+          <button onclick="messageWhatsApp('${p.name}')" class="text-xs bg-purple-600 text-white px-3 py-1 rounded">Message</button>
+        </div>
+      </div>
+    `;
+    productsEl.appendChild(card);
+  });
+
+  document.querySelectorAll('.fade-up').forEach(el=>{
+    setTimeout(()=>el.classList.add('show'), 60);
+  });
+}
+
+function renderDiscounts() {
+  discountProductsEl.innerHTML = '';
+  discountProducts.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'bg-white rounded-lg shadow p-2 flex gap-2 items-center hover:shadow-lg transition';
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.name}" class="w-16 h-16 object-cover rounded">
+      <div class="flex-1">
+        <h4 class="text-sm font-medium">${p.name}</h4>
+        <p class="text-xs text-purple-600 font-semibold">₦${p.price}</p>
+      </div>
+      <button onclick="messageWhatsApp('${p.name}')" class="text-xs bg-purple-600 text-white px-2 py-1 rounded">Message</button>
+    `;
+    discountProductsEl.appendChild(card);
+  });
+}
+
+function messageWhatsApp(productName){
+  const text = `Hello Noah, I'm interested in "${productName}". Please send details.`;
+  window.open(`https://wa.me/08038137679?text=${encodeURIComponent(text)}`,'_blank');
+}
+
+searchBox.addEventListener('input', renderProducts);
+categoryFilter.addEventListener('change', renderProducts);
+renderProducts();
+renderDiscounts();
+
+// Discount sidebar toggle
+discountToggle.addEventListener('click', ()=>{
+  discountSidebar.style.right = '-260px';
+  discountShowBtn.style.display = 'block';
+});
+discountShowBtn.addEventListener('click', ()=>{
+  discountSidebar.style.right = '0';
+  discountShowBtn.style.display = 'none';
+});
+
+// Mobile menu toggle
+const btn = document.getElementById('mobileBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if(btn){ btn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden')); }
+</script>
+
+</body>
+</html>
