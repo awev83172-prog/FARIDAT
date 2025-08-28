@@ -161,7 +161,7 @@
 
   <!-- FOOTER -->
   <footer class="bg-white mt-12 py-6 text-center text-gray-500">
-    <p>© 2025 SHOP W FAFA | All Rights Reserved | Developed by VT</p>
+    <p>© 2025 SHOP W FAFA | All Rights Reserved | Developed by VT DESIGNS</p>
   </footer>
 
   <!-- WHATSAPP CHAT BUTTON -->
